@@ -2,6 +2,8 @@ The goal of this coding exam is to quickly get you off the ground with **Lists a
 
 ### Refer to the image below:
 
+https://github.com/Sreekanth4935/react-89-myTask-mock1b/assets/37910008/d2250802-35fe-4fed-98ef-829fb148b0c9
+
 <br>
 <div style="text-align: center;">
   <video style="max-width:80%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12);outline:none;" loop="true" autoplay="autoplay" controls="controls" muted>
