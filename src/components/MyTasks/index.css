@@ -71,3 +71,30 @@
   color: #ffffff;
   border: solid 1px #f3aa4e;
 }
+.active-btn {
+  background-color: rgb(206, 206, 197);
+}
+.items-ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  margin: 10px;
+  /* padding: 3px; */
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.para1 {
+  border-radius: 20px;
+  background-color: #f3aa4e;
+  color: #ffffff;
+  padding: 5px;
+  min-width: 100px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}

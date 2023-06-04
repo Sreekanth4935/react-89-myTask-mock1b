@@ -34,6 +34,7 @@ class MyTasks extends Component {
     activeOptionId: tagsList[0].optionId,
     inputTask: '',
     addedTaskList: [],
+    activeButtonId: '',
   }
 
   setInputText = event => {
@@ -64,14 +65,45 @@ class MyTasks extends Component {
   }
 
   changeActiveOptionId = newActiveId => {
-    this.setState({
-      activeOptionId: newActiveId,
-    })
+    // const {activeButtonId} = this.state
+    // this.setState({
+    //   activeButtonId: activeButtonId === newActiveId ? '' : newActiveId,
+    // })
+    this.setState(prevState => ({
+      activeButtonId:
+        prevState.activeButtonId === newActiveId ? '' : newActiveId,
+    }))
+  }
+
+  renderAddedTask = () => {
+    const {activeButtonId, addedTaskList} = this.state
+    const updatedAddedList =
+      activeButtonId === ''
+        ? addedTaskList
+        : addedTaskList.filter(
+            eachTask => eachTask.activeOptionId === activeButtonId,
+          )
+    // console.log(updatedAddedList)
+    return (
+      <ul className="items-ul">
+        {updatedAddedList.map(eachItem => (
+          <li key={eachItem.id} className="list-item">
+            <p>{eachItem.taskName}</p>
+            <p className="para1">{eachItem.activeOptionId.toLowerCase()}</p>
+          </li>
+        ))}
+      </ul>
+    )
   }
 
   render() {
-    const {activeOptionId, addedTaskList, inputTask} = this.state
-    console.log(addedTaskList)
+    const {
+      activeOptionId,
+      addedTaskList,
+      inputTask,
+      activeButtonId,
+    } = this.state
+    console.log(activeButtonId)
 
     return (
       <div className="task-container">
@@ -117,7 +149,7 @@ class MyTasks extends Component {
               <li key={eachTag.optionId}>
                 <button
                   className={
-                    eachTag.optionId === activeOptionId
+                    eachTag.optionId === activeButtonId
                       ? 'btn active-btn'
                       : 'btn'
                   }
@@ -130,6 +162,10 @@ class MyTasks extends Component {
             ))}
           </ul>
           <h1>Tasks</h1>
+          <div>
+            {addedTaskList.length === 0 && <p>No Tasks Added Yet</p>}
+            {this.renderAddedTask()}
+          </div>
         </div>
       </div>
     )
