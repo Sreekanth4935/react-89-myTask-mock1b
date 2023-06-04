@@ -44,7 +44,7 @@ class MyTasks extends Component {
 
   getActiveOption = event => {
     this.setState({
-      activeOptionId: event.target.id,
+      activeOptionId: event.target.value,
     })
   }
 
@@ -56,17 +56,11 @@ class MyTasks extends Component {
       taskName: inputTask,
       activeOptionId,
     }
-    this.setState(
-      prevState => ({
-        addedTaskList: [...prevState.addedTaskList, newAddedTask],
-        inputTask: '',
-        //   activeOptionId: tagsList[0].optionId,
-      }),
-      () => {
-        const selectElement = document.getElementById(activeOptionId)
-        selectElement.value = tagsList[0].optionId
-      },
-    )
+    this.setState(prevState => ({
+      addedTaskList: [...prevState.addedTaskList, newAddedTask],
+      inputTask: '',
+      activeOptionId: tagsList[0].optionId,
+    }))
   }
 
   changeActiveOptionId = newActiveId => {
@@ -94,16 +88,16 @@ class MyTasks extends Component {
                 placeholder="Enter the task here"
               />
             </label>
-            <label className="label">
+            <label htmlFor="selectTags" className="label">
               Tags
               <select
                 onChange={this.getActiveOption}
-                id={activeOptionId}
-                // value={activeOptionId}
+                id="selectTags"
+                value={activeOptionId}
                 className="select-cls"
               >
                 {tagsList.map(eachTask => (
-                  <option key={eachTask.optionId}>
+                  <option value={eachTask.optionId} key={eachTask.optionId}>
                     {eachTask.displayText}
                   </option>
                 ))}
